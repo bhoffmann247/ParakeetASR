@@ -1,0 +1,179 @@
+1
+0:00:02,640 --> 0:00:05,520
+[speaker_SPEAKER_00] Speaker 1: Hello, thank you for calling PetSmart customers here.
+
+2
+0:00:05,760 --> 0:00:09,280
+[speaker_SPEAKER_00] This is Paula, to whom do I have the pleasure of speaking?
+
+3
+0:00:10,240 --> 0:00:16,000
+[speaker_SPEAKER_00] Hi, my name is Jolie Kor, and I'm just go ahead.
+
+4
+0:00:16,960 --> 0:00:18,480
+[speaker_SPEAKER_00] I was going to say hi, Jolie.
+
+5
+0:00:19,760 --> 0:00:20,320
+[speaker_SPEAKER_00] Hi.
+
+6
+0:00:21,200 --> 0:00:23,440
+[speaker_SPEAKER_00] Do you need other information from me?
+
+7
+0:00:24,000 --> 0:00:27,440
+[speaker_SPEAKER_00] Yes, your email address and phone number, please.
+
+8
+0:00:29,360 --> 0:00:39,280
+[speaker_SPEAKER_00] My email is jolle.co96 at yahoo.com.
+
+9
+0:00:40,960 --> 0:00:48,560
+[speaker_SPEAKER_00] My phone number is 971-344-7099.
+
+10
+0:00:49,840 --> 0:00:50,320
+[speaker_SPEAKER_00] Awesome.
+
+11
+0:00:50,480 --> 0:00:52,240
+[speaker_SPEAKER_00] Thank you very much for that.
+
+12
+0:00:52,880 --> 0:00:54,480
+[speaker_SPEAKER_00] How can I help you tonight, Jolie?
+
+13
+0:00:56,000 --> 0:01:02,960
+[speaker_SPEAKER_00] I was just calling to see what we can do about my auto-ship order.
+
+14
+0:01:04,240 --> 0:01:08,480
+[speaker_SPEAKER_00] It says it's expired and that it's undeliverable.
+
+15
+0:01:09,520 --> 0:01:15,760
+[speaker_SPEAKER_00] So I think it needs like re-sent out with Roadie or FedEx, whichever one.
+
+16
+0:01:16,080 --> 0:01:18,640
+[speaker_SPEAKER_00] But this is the second time it's happened now.
+
+17
+0:01:19,200 --> 0:01:19,920
+[speaker_SPEAKER_00] Oh, no.
+
+18
+0:01:23,040 --> 0:01:24,480
+[speaker_SPEAKER_00] Let me see here.
+
+19
+0:01:34,640 --> 0:01:37,120
+[speaker_SPEAKER_00] Why are they not delivering this?
+
+20
+0:01:39,680 --> 0:01:40,400
+[speaker_SPEAKER_00] I'm not sure.
+
+21
+0:01:40,640 --> 0:01:54,960
+[speaker_SPEAKER_00] I've gotten packages from PetSmart like through the normal deliveries through Rhodi just funds, but this is my first auto-ship order, and it's just not working very well.
+
+22
+0:01:56,160 --> 0:02:01,680
+[speaker_SPEAKER_00] People are picking up the gig and then canceling it or not doing it.
+
+23
+0:02:03,840 --> 0:02:04,960
+[speaker_SPEAKER_00] This doesn't make sense.
+
+24
+0:02:05,200 --> 0:02:05,920
+[speaker_SPEAKER_00] I don't get it.
+
+25
+0:02:09,120 --> 0:02:09,600
+[speaker_SPEAKER_00] All right.
+
+26
+0:02:09,920 --> 0:02:17,920
+[speaker_SPEAKER_00] Well, I could reship it a third time, or I could refund it.
+
+27
+0:02:18,160 --> 0:02:19,840
+[speaker_SPEAKER_00] Which would you prefer?
+
+28
+0:02:21,120 --> 0:02:25,280
+[speaker_SPEAKER_00] I would prefer to have it sent out again.
+
+29
+0:02:26,000 --> 0:02:26,320
+[speaker_SPEAKER_00] Okay.
+
+30
+0:02:32,080 --> 0:02:32,720
+[speaker_SPEAKER_00] All right.
+
+31
+0:02:39,040 --> 0:02:40,240
+[speaker_SPEAKER_00] Almost finished.
+
+32
+0:02:44,400 --> 0:02:44,480
+[speaker_SPEAKER_00] Okay.
+
+33
+0:02:54,240 --> 0:02:54,720
+[speaker_SPEAKER_00] All right.
+
+34
+0:02:55,360 --> 0:02:59,440
+[speaker_SPEAKER_00] That has been processed and it should arrive in the next one to three days.
+
+35
+0:03:01,120 --> 0:03:01,440
+[speaker_SPEAKER_00] Okay.
+
+36
+0:03:01,840 --> 0:03:02,640
+[speaker_SPEAKER_00] Thank you.
+
+37
+0:03:03,200 --> 0:03:04,080
+[speaker_SPEAKER_00] You are welcome.
+
+38
+0:03:04,240 --> 0:03:07,520
+[speaker_SPEAKER_00] Is there anything else I can do to help you and your puppy dogs connect?
+
+39
+0:03:08,720 --> 0:03:09,760
+[speaker_SPEAKER_00] That will be all.
+
+40
+0:03:10,400 --> 0:03:10,800
+[speaker_SPEAKER_00] All right.
+
+41
+0:03:10,960 --> 0:03:12,800
+[speaker_SPEAKER_00] Well, thank you for calling PetSmart.
+
+42
+0:03:13,280 --> 0:03:15,120
+[speaker_SPEAKER_00] And I hope you have a wonderful evening.
+
+43
+0:03:16,080 --> 0:03:16,640
+[speaker_SPEAKER_00] You as well.
+
+44
+0:03:16,880 --> 0:03:17,520
+[speaker_SPEAKER_00] Bye-bye.
+
+45
+0:03:18,160 --> 0:03:18,560
+[speaker_SPEAKER_00] Thank you.
