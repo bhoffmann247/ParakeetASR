@@ -1,0 +1,163 @@
+1
+0:00:06,720 --> 0:00:08,880
+[speaker_SPEAKER_00] Speaker 1: Hi, thank you for calling PetSmart Customer Care.
+
+2
+0:00:09,120 --> 0:00:12,320
+[speaker_SPEAKER_00] This is Michaela speaking who I have the pleasure of speaking with today.
+
+3
+0:00:12,960 --> 0:00:14,320
+[speaker_SPEAKER_01] Speaker 2: Yes, thank you, Michaela.
+
+4
+0:00:14,400 --> 0:00:15,360
+[speaker_SPEAKER_01] My name is Alan.
+
+5
+0:00:16,320 --> 0:00:16,880
+[speaker_SPEAKER_00] 1: Hi, Alan.
+
+6
+0:00:16,960 --> 0:00:17,600
+[speaker_SPEAKER_00] How are you?
+
+7
+0:00:18,240 --> 0:00:18,800
+[speaker_SPEAKER_01] 2: Very well.
+
+8
+0:00:18,880 --> 0:00:20,080
+[speaker_SPEAKER_01] Thank you, South.
+
+9
+0:00:21,520 --> 0:00:22,080
+[speaker_SPEAKER_00] 1: I'm fine.
+
+10
+0:00:22,160 --> 0:00:23,440
+[speaker_SPEAKER_00] What's going on today, Alan?
+
+11
+0:00:24,320 --> 0:00:30,080
+[speaker_SPEAKER_01] 2: I just need to cancel an order because I just picked up the food from my local Pet Smart.
+
+12
+0:00:32,800 --> 0:00:33,680
+[speaker_SPEAKER_01] I have the order.
+
+13
+0:00:34,480 --> 0:00:35,920
+[speaker_SPEAKER_00] 1: Can I have your phone number and email?
+
+14
+0:00:36,080 --> 0:00:38,320
+[speaker_SPEAKER_00] I'll just real quick to verify your account, please.
+
+15
+0:00:38,960 --> 0:00:39,520
+[speaker_SPEAKER_01] 2: Yeah, for sure.
+
+16
+0:00:39,760 --> 0:00:45,360
+[speaker_SPEAKER_01] Phone number is 647-724-5477.
+
+17
+0:00:47,360 --> 0:00:54,480
+[speaker_SPEAKER_01] Email address is Maurizio underscore VT at iCloud.com.
+
+18
+0:00:55,120 --> 0:00:56,240
+[speaker_SPEAKER_00] 1: Thank you so much, Mr.
+
+19
+0:00:56,400 --> 0:00:57,120
+[speaker_SPEAKER_00] Allen.
+
+20
+0:00:57,680 --> 0:01:00,640
+[speaker_SPEAKER_00] Give me just a moment while I check out this order.
+
+21
+0:01:02,160 --> 0:01:02,480
+[speaker_SPEAKER_01] 2: Thank you.
+
+22
+0:01:02,720 --> 0:01:05,360
+[speaker_SPEAKER_00] 1: Was this the order that was placed on the 30th?
+
+23
+0:01:06,320 --> 0:01:07,520
+[speaker_SPEAKER_01] 2: That is correct.
+
+24
+0:01:07,840 --> 0:01:13,200
+[speaker_SPEAKER_00] 1: Okay, Alan, unfortunately, this order cannot be canceled as it is too late.
+
+25
+0:01:15,040 --> 0:01:21,920
+[speaker_SPEAKER_00] But what you can do is once the order is delivered, you can return it in store if you would like.
+
+26
+0:01:23,120 --> 0:01:23,440
+[speaker_SPEAKER_01] 2: Okay.
+
+27
+0:01:23,760 --> 0:01:24,000
+[speaker_SPEAKER_00] 1: Okay.
+
+28
+0:01:24,480 --> 0:01:24,720
+[speaker_SPEAKER_01] 2: Okay.
+
+29
+0:01:25,440 --> 0:01:26,800
+[speaker_SPEAKER_01] I will just like, yeah.
+
+30
+0:01:26,960 --> 0:01:27,600
+[speaker_SPEAKER_01] Okay, perfect.
+
+31
+0:01:27,840 --> 0:01:28,480
+[speaker_SPEAKER_01] I can do that.
+
+32
+0:01:28,640 --> 0:01:30,160
+[speaker_SPEAKER_01] Thank you so much, Michaela.
+
+33
+0:01:30,480 --> 0:01:30,960
+[speaker_SPEAKER_00] 1: No problem.
+
+34
+0:01:31,040 --> 0:01:33,280
+[speaker_SPEAKER_00] Is there anything else I can assist you at the moment, Mr.
+
+35
+0:01:33,360 --> 0:01:34,000
+[speaker_SPEAKER_00] Alan?
+
+36
+0:01:34,560 --> 0:01:35,520
+[speaker_SPEAKER_01] 2: No, that's everything.
+
+37
+0:01:35,760 --> 0:01:36,000
+[speaker_SPEAKER_01] Thank you.
+
+38
+0:01:36,080 --> 0:01:36,880
+[speaker_SPEAKER_01] Have a good night.
+
+39
+0:01:37,200 --> 0:01:37,760
+[speaker_SPEAKER_00] 1: You as well.
+
+40
+0:01:37,920 --> 0:01:39,360
+[speaker_SPEAKER_00] Thank you for calling Pet Smart.
+
+41
+0:01:39,440 --> 0:01:40,160
+[speaker_SPEAKER_00] Take care.

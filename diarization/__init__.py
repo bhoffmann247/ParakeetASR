@@ -46,8 +46,8 @@ class Diarizer:
 
             # Initialize the pipeline
             self.pipeline = Pipeline.from_pretrained(
-                "pyannote/speaker-diarization-3.1",
-                use_auth_token=self.access_token
+                "pyannote/speaker-diarization-community-1",
+                token=self.access_token
             )
 
             # Move to GPU if available
@@ -75,9 +75,29 @@ class Diarizer:
             return DiarizationResult(segments=[], num_speakers=0)
 
         try:
+            # Load audio using torchaudio to avoid torchcodec issues on Windows
+            import torchaudio
+            waveform, sample_rate = torchaudio.load(audio_path)
+            
+            # Convert to mono if stereo
+            if waveform.shape[0] > 1:
+                waveform = torch.mean(waveform, dim=0, keepdim=True)
+            
+            # Resample to 16kHz if needed
+            if sample_rate != 16000:
+                resampler = torchaudio.transforms.Resample(sample_rate, 16000)
+                waveform = resampler(waveform)
+                sample_rate = 16000
+            
+            # Create audio dictionary for pyannote
+            audio_dict = {
+                "waveform": waveform,
+                "sample_rate": sample_rate
+            }
+            
             # Run the diarization pipeline
             diarization = self.pipeline(
-                audio_path,
+                audio_dict,
                 num_speakers=num_speakers
             )
 
@@ -86,7 +106,15 @@ class Diarizer:
             speakers = set()
 
             # Process the diarization result
-            for turn, _, speaker in diarization.itertracks(yield_label=True):
+            # In newer versions, the result has a different structure
+            if hasattr(diarization, 'speaker_diarization'):
+                # Use the speaker_diarization attribute
+                diarization_annotation = diarization.speaker_diarization
+            else:
+                # Fallback to the result itself
+                diarization_annotation = diarization
+            
+            for turn, _, speaker in diarization_annotation.itertracks(yield_label=True):
                 # Convert speaker label to consistent format
                 # This handles different formats from pyannote.audio versions
                 if isinstance(speaker, str) and not speaker.startswith("SPEAKER_"):

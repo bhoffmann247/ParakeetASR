@@ -1,0 +1,463 @@
+1
+0:00:05,760 --> 0:00:07,040
+[speaker_SPEAKER_01] Speaker 2: Hi, my name is Xavier.
+
+2
+0:00:07,120 --> 0:00:08,880
+[speaker_SPEAKER_01] Thank you for calling Customer Customer Care.
+
+3
+0:00:08,960 --> 0:00:11,440
+[speaker_SPEAKER_01] May I please get your name, phone, and email?
+
+4
+0:00:12,400 --> 0:00:17,360
+[speaker_SPEAKER_00] Speaker 1: Yep, 778-513-3660.
+
+5
+0:00:19,120 --> 0:00:19,600
+[speaker_SPEAKER_01] 2: Perfect.
+
+6
+0:00:19,760 --> 0:00:21,440
+[speaker_SPEAKER_01] And then how can I help you today?
+
+7
+0:00:22,720 --> 0:00:28,160
+[speaker_SPEAKER_00] 1: I just got a text message that my order was canceled and I'm supposed to contact you guys.
+
+8
+0:00:28,320 --> 0:00:37,280
+[speaker_SPEAKER_00] And I'm kind of panicking because I got some weird text messages from them today that they were here when they were here.
+
+9
+0:00:37,360 --> 0:00:41,840
+[speaker_SPEAKER_00] And that's like $300 worth of product has now disappeared.
+
+10
+0:00:42,160 --> 0:00:43,920
+[speaker_SPEAKER_00] I'm kind of panicking.
+
+11
+0:00:45,840 --> 0:00:46,800
+[speaker_SPEAKER_01] 2: Yeah, absolutely.
+
+12
+0:00:46,960 --> 0:00:47,920
+[speaker_SPEAKER_01] I totally understand.
+
+13
+0:00:48,080 --> 0:00:50,160
+[speaker_SPEAKER_01] Was that order number from today?
+
+14
+0:00:51,680 --> 0:00:52,400
+[speaker_SPEAKER_00] 1: Yeah, yeah.
+
+15
+0:00:54,080 --> 0:00:54,560
+[speaker_SPEAKER_00] $300.
+
+16
+0:00:56,560 --> 0:01:00,640
+[speaker_SPEAKER_01] 2: It was $34.99 a day ago.
+
+17
+0:01:00,800 --> 0:01:01,040
+[speaker_SPEAKER_01] Okay.
+
+18
+0:01:03,600 --> 0:01:06,480
+[speaker_SPEAKER_01] Okay, let me take a look into that for you.
+
+19
+0:01:07,440 --> 0:01:08,400
+[speaker_SPEAKER_00] 1: Thank you so much.
+
+20
+0:01:08,640 --> 0:01:09,920
+[speaker_SPEAKER_00] I hope I'm not being rude.
+
+21
+0:01:10,000 --> 0:01:11,920
+[speaker_SPEAKER_01] 2: I'm just a little shocked.
+
+22
+0:01:15,360 --> 0:01:15,920
+[speaker_SPEAKER_01] You're fine.
+
+23
+0:01:16,000 --> 0:01:17,520
+[speaker_SPEAKER_01] I just hope that I can help.
+
+24
+0:01:19,120 --> 0:01:20,880
+[speaker_SPEAKER_01] I don't know if I can see it.
+
+25
+0:01:21,120 --> 0:01:22,080
+[speaker_SPEAKER_00] 1: It was really weird.
+
+26
+0:01:22,240 --> 0:01:29,280
+[speaker_SPEAKER_00] Like, Luke, I've been having text messages from like 11 this morning, and I never get stuff like this.
+
+27
+0:01:31,360 --> 0:01:31,520
+[speaker_SPEAKER_01] 2: Yeah.
+
+28
+0:01:36,560 --> 0:01:39,360
+[speaker_SPEAKER_01] That order number isn't working.
+
+29
+0:01:40,560 --> 0:01:41,760
+[speaker_SPEAKER_01] Let me see.
+
+30
+0:01:43,040 --> 0:01:43,520
+[speaker_SPEAKER_01] You know what?
+
+31
+0:01:43,680 --> 0:01:44,640
+[speaker_SPEAKER_01] Actually, let me see.
+
+32
+0:01:44,800 --> 0:01:48,240
+[speaker_SPEAKER_01] I have something I can check for sure to see if it's canceled or not.
+
+33
+0:01:48,560 --> 0:01:54,160
+[speaker_SPEAKER_01] Because on my side, it says that it was completed, but I know you said that you never received the order, right?
+
+34
+0:01:55,440 --> 0:01:59,120
+[speaker_SPEAKER_00] 1: No, and I can even send you the text message.
+
+35
+0:01:59,440 --> 0:02:01,760
+[speaker_SPEAKER_00] It says, sorry that your delivery was canceled.
+
+36
+0:02:01,840 --> 0:02:04,480
+[speaker_SPEAKER_00] Your delivery person couldn't finish the delivery.
+
+37
+0:02:04,800 --> 0:02:08,000
+[speaker_SPEAKER_00] Please contact PepSmart for further assistance.
+
+38
+0:02:10,800 --> 0:02:11,040
+[speaker_SPEAKER_01] 2: Yeah.
+
+39
+0:02:12,000 --> 0:02:20,640
+[speaker_SPEAKER_01] Yeah, I'm looking to see if I can find the charge through your email.
+
+40
+0:02:21,600 --> 0:02:23,600
+[speaker_SPEAKER_01] I don't see anything either.
+
+41
+0:02:24,240 --> 0:02:25,840
+[speaker_SPEAKER_01] Nothing popping up there.
+
+42
+0:02:26,480 --> 0:02:28,160
+[speaker_SPEAKER_01] And then let me see.
+
+43
+0:02:30,480 --> 0:02:34,960
+[speaker_SPEAKER_01] I'm going to find where the tracking number and where it is in general.
+
+44
+0:02:35,280 --> 0:02:36,000
+[speaker_SPEAKER_00] 1: Oh, my God.
+
+45
+0:02:37,760 --> 0:02:43,120
+[speaker_SPEAKER_00] And now I'm scared that to you guys, it looks like it's completed and it's not here.
+
+46
+0:02:43,200 --> 0:02:44,240
+[speaker_SPEAKER_00] I wouldn't do that.
+
+47
+0:02:44,560 --> 0:02:46,160
+[speaker_SPEAKER_00] That's $300 a worth of.
+
+48
+0:02:46,560 --> 0:02:47,120
+[speaker_SPEAKER_00] Oh, my God.
+
+49
+0:02:47,840 --> 0:02:48,240
+[speaker_SPEAKER_01] 2: Don't worry.
+
+50
+0:02:48,320 --> 0:02:48,560
+[speaker_SPEAKER_01] Don't worry.
+
+51
+0:02:48,960 --> 0:02:49,280
+[speaker_SPEAKER_01] It's fine.
+
+52
+0:02:50,560 --> 0:02:51,360
+[speaker_SPEAKER_01] I'm going to help.
+
+53
+0:02:51,440 --> 0:02:52,640
+[speaker_SPEAKER_01] I'm going to look into it.
+
+54
+0:02:53,280 --> 0:02:54,320
+[speaker_SPEAKER_01] Okay, I found it.
+
+55
+0:02:54,480 --> 0:02:55,040
+[speaker_SPEAKER_01] I found it.
+
+56
+0:02:55,280 --> 0:02:58,160
+[speaker_SPEAKER_01] So it's the, let me go to it right now.
+
+57
+0:02:58,800 --> 0:03:03,760
+[speaker_SPEAKER_01] It's the Apple Law is a doubt wet cat food, natural limited ingredient.
+
+58
+0:03:04,080 --> 0:03:09,440
+[speaker_SPEAKER_01] And then Apple is a doubt calf food and broth, grain fish, whiskers, portions.
+
+59
+0:03:09,760 --> 0:03:10,080
+[speaker_SPEAKER_01] Okay.
+
+60
+0:03:10,800 --> 0:03:12,480
+[speaker_SPEAKER_01] And then you didn't get any of these.
+
+61
+0:03:13,280 --> 0:03:15,120
+[speaker_SPEAKER_01] Yeah, let me see what happened to them.
+
+62
+0:03:16,080 --> 0:03:18,160
+[speaker_SPEAKER_01] Yeah, Uber canceled your order.
+
+63
+0:03:18,400 --> 0:03:25,680
+[speaker_SPEAKER_01] So what I will do is I can reship them to you, but that's okay.
+
+64
+0:03:25,840 --> 0:03:27,440
+[speaker_SPEAKER_01] I can reship the order.
+
+65
+0:03:28,080 --> 0:03:28,480
+[speaker_SPEAKER_01] And then I'll...
+
+66
+0:03:28,720 --> 0:03:29,600
+[speaker_SPEAKER_00] 1: Oh, that would be great.
+
+67
+0:03:29,920 --> 0:03:34,240
+[speaker_SPEAKER_01] 2: Did you just want the same size and same quantities for everything?
+
+68
+0:03:34,800 --> 0:03:35,040
+[speaker_SPEAKER_01] Okay.
+
+69
+0:03:35,200 --> 0:03:36,880
+[speaker_SPEAKER_01] I'm going to do a reshipment.
+
+70
+0:03:38,320 --> 0:03:40,960
+[speaker_SPEAKER_00] 1: Yeah, I do a month work at a time.
+
+71
+0:03:41,280 --> 0:03:41,520
+[speaker_SPEAKER_01] 2: Okay.
+
+72
+0:03:42,720 --> 0:03:44,560
+[speaker_SPEAKER_00] 1: For our 500 million cats.
+
+73
+0:03:44,960 --> 0:03:47,360
+[speaker_SPEAKER_01] 2: Yeah, I'm going to do a yeah, don't worry about it.
+
+74
+0:03:47,440 --> 0:03:50,400
+[speaker_SPEAKER_01] I know you're stressing out and everything, so don't worry.
+
+75
+0:03:50,480 --> 0:03:52,240
+[speaker_SPEAKER_01] I'm going to do this reshipment for you.
+
+76
+0:03:52,880 --> 0:04:05,280
+[speaker_SPEAKER_00] 1: Thank you, because it's weird because this may be someone says I said I've been getting text messages from two different members since last night, and they were contradicting each other.
+
+77
+0:04:06,720 --> 0:04:11,760
+[speaker_SPEAKER_00] And then it was saying that they were here, that your order has arrived.
+
+78
+0:04:11,920 --> 0:04:23,680
+[speaker_SPEAKER_00] Just give them a couple minutes to, you know, like give a moment to drop off your order.
+
+79
+0:04:23,760 --> 0:04:25,600
+[speaker_SPEAKER_00] We'll let you know when it's there.
+
+80
+0:04:26,320 --> 0:04:28,640
+[speaker_SPEAKER_00] I even have the person's name, everything.
+
+81
+0:04:28,960 --> 0:04:34,640
+[speaker_SPEAKER_00] And then I got other messages from somebody saying also that they were Uber.
+
+82
+0:04:35,600 --> 0:04:35,920
+[speaker_SPEAKER_01] 2: Yeah.
+
+83
+0:04:37,200 --> 0:04:38,480
+[speaker_SPEAKER_01] That's just one of them.
+
+84
+0:04:38,640 --> 0:04:52,960
+[speaker_SPEAKER_01] One of them might have just been, it might have been a store, and the other one was probably Uber, but Uber is known for doing a little bit just like canceling your order with no explanation as to why.
+
+85
+0:04:54,560 --> 0:04:55,280
+[speaker_SPEAKER_01] I don't know why.
+
+86
+0:04:55,840 --> 0:05:01,760
+[speaker_SPEAKER_00] 1: I know my work gave me a gift card and it's sitting in my Uber Eats account.
+
+87
+0:05:02,400 --> 0:05:08,080
+[speaker_SPEAKER_00] And it's now charging me something like three times a normal amount.
+
+88
+0:05:08,720 --> 0:05:12,240
+[speaker_SPEAKER_00] Uber is fun.
+
+89
+0:05:25,120 --> 0:05:26,000
+[speaker_SPEAKER_00] You still ask?
+
+90
+0:05:28,640 --> 0:05:29,440
+[speaker_SPEAKER_01] 2: Yes, I'm still here.
+
+91
+0:05:29,520 --> 0:05:29,760
+[speaker_SPEAKER_01] Sorry.
+
+92
+0:05:31,920 --> 0:05:33,920
+[speaker_SPEAKER_01] Yeah, I was saying what I can do.
+
+93
+0:05:34,400 --> 0:05:38,560
+[speaker_SPEAKER_01] I went ahead with that reshipment and I left the note and everything.
+
+94
+0:05:38,720 --> 0:05:38,880
+[speaker_SPEAKER_01] Yeah.
+
+95
+0:05:41,360 --> 0:05:41,840
+[speaker_SPEAKER_00] 1: Thank you.
+
+96
+0:05:41,920 --> 0:05:42,320
+[speaker_SPEAKER_00] Thank you.
+
+97
+0:05:42,400 --> 0:05:42,880
+[speaker_SPEAKER_00] Thank you.
+
+98
+0:05:43,040 --> 0:05:44,240
+[speaker_SPEAKER_00] I still appreciate it.
+
+99
+0:05:44,800 --> 0:05:45,360
+[speaker_SPEAKER_00] Absolutely.
+
+100
+0:05:45,440 --> 0:05:48,160
+[speaker_SPEAKER_01] 2: And then was there anything else that I can help with you, too?
+
+101
+0:05:48,960 --> 0:05:49,360
+[speaker_SPEAKER_00] 1: Nope.
+
+102
+0:05:49,520 --> 0:05:50,560
+[speaker_SPEAKER_00] I feel much better.
+
+103
+0:05:50,800 --> 0:05:52,720
+[speaker_SPEAKER_00] Thank you for walking me through all that.
+
+104
+0:05:53,040 --> 0:05:57,120
+[speaker_SPEAKER_00] Yeah, he did.
+
+105
+0:05:57,840 --> 0:06:00,560
+[speaker_SPEAKER_01] 2: Yeah, you could give me a good survey, a good survey.
+
+106
+0:06:00,800 --> 0:06:01,600
+[speaker_SPEAKER_01] The surveys will help.
+
+107
+0:06:01,920 --> 0:06:02,640
+[speaker_SPEAKER_00] 1: I'd love to.
+
+108
+0:06:02,960 --> 0:06:03,920
+[speaker_SPEAKER_00] Yeah, I'd love to.
+
+109
+0:06:04,240 --> 0:06:04,800
+[speaker_SPEAKER_01] 2: Thank you so much.
+
+110
+0:06:05,200 --> 0:06:07,600
+[speaker_SPEAKER_01] And then also, too, thank you for calling TouchMark Customer Care.
+
+111
+0:06:07,680 --> 0:06:08,560
+[speaker_SPEAKER_01] And my name is Xavier.
+
+112
+0:06:08,720 --> 0:06:10,320
+[speaker_SPEAKER_01] I hope you have a great rest of your night.
+
+113
+0:06:10,960 --> 0:06:12,000
+[speaker_SPEAKER_00] 1: Thanks, Xavier.
+
+114
+0:06:12,080 --> 0:06:12,880
+[speaker_SPEAKER_00] Have a good night.
+
+115
+0:06:13,200 --> 0:06:13,760
+[speaker_SPEAKER_01] 2: You're welcome.
+
+116
+0:06:13,840 --> 0:06:14,720
+[speaker_SPEAKER_01] Bye-bye.
