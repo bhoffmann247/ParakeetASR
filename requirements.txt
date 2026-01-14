@@ -1,4 +1,4 @@
-nemo_toolkit
+nemo_toolkit[all]
 fastapi
 uvicorn
 python-multipart
@@ -24,4 +24,3 @@ soundfile
 cuda-python
 omegaconf
 scikit-learn
-fiddle-config
