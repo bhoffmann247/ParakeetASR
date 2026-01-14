@@ -24,4 +24,4 @@ soundfile
 cuda-python
 omegaconf
 scikit-learn
-fiddle
+fiddle-config
