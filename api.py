@@ -58,12 +58,8 @@ def create_app() -> FastAPI:
             asr_model = load_model(model_id)
             logger.info(f"Model {model_id} loaded successfully")
 
-            # Initialize diarization if token is available
-            hf_token = config.get_hf_token()
-            if hf_token:
-                logger.info("HuggingFace access token found, speaker diarization will be available")
-            else:
-                logger.info("No HuggingFace access token, speaker diarization will be disabled")
+            # NeMo diarization is available by default
+            logger.info("NeMo speaker diarization is available")
 
         except Exception as e:
             logger.error(f"Error during startup: {str(e)}")
@@ -72,7 +68,7 @@ def create_app() -> FastAPI:
     @app.post("/v1/audio/transcriptions")
     async def transcribe_audio(
         file: UploadFile = File(...),
-        model: str = Form("whisper-1"),
+        model: str = Form("parakeet-tdt-0.6b-v2"),
         language: Optional[str] = Form(None),
         prompt: Optional[str] = Form(None),
         response_format: str = Form("json"),
@@ -87,7 +83,8 @@ def create_app() -> FastAPI:
         """
         Transcribe audio file using the Parakeet-TDT model
 
-        This endpoint is compatible with the OpenAI Whisper API
+        This endpoint is compatible with the OpenAI Whisper API.
+        Accepts both "parakeet-tdt-0.6b-v2" and "whisper-1" (alias) as model names.
         """
 
         global asr_model
@@ -95,8 +92,13 @@ def create_app() -> FastAPI:
         if not asr_model:
             raise HTTPException(status_code=503, detail="Model not loaded yet. Please try again in a few moments.")
 
+        # Accept "whisper-1" as an alias for compatibility
+        if model == "whisper-1":
+            logger.info("Model 'whisper-1' requested (using parakeet-tdt-0.6b-v2)")
+            model = "parakeet-tdt-0.6b-v2"
+        
         # Process parameters
-        logger.info(f"Transcription requested: {file.filename}, format: {response_format}")
+        logger.info(f"Transcription requested: {file.filename}, model: {model}, format: {response_format}")
 
         try:
             # Save uploaded file to temp location
@@ -118,11 +120,8 @@ def create_app() -> FastAPI:
             # Initialize diarization if requested
             diarizer = None
             if diarize:
-                hf_token = config.get_hf_token()
-                if hf_token:
-                    diarizer = Diarizer(access_token=hf_token)
-                else:
-                    logger.warning("Diarization requested but no HuggingFace token available")
+                diarizer = Diarizer()
+                logger.info("NeMo diarizer initialized")
 
             # Process speaker diarization if requested
             diarization_result = None
@@ -272,13 +271,15 @@ def create_app() -> FastAPI:
     async def list_models():
         """
         List available models (compatibility with OpenAI API)
+        
+        Returns the actual Parakeet-TDT model, but also accepts "whisper-1" as an alias
         """
         models = [
             ModelInfo(
-                id="whisper-1",
+                id="parakeet-tdt-0.6b-v2",
                 created=1677649963,
-                owned_by="parakeet",
-                root="whisper-1",
+                owned_by="nvidia",
+                root="parakeet-tdt-0.6b-v2",
                 permission=[{"id": "modelperm-1", "object": "model_permission", "created": 1677649963,
                            "allow_create_engine": False, "allow_sampling": True, "allow_logprobs": True,
                            "allow_search_indices": False, "allow_view": True, "allow_fine_tuning": False,

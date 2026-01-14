@@ -1,6 +1,6 @@
 # Parakeet Whisper-Compatible API
 
-A simple FastAPI server that provides an OpenAI Whisper API-compatible endpoint backed by [NVIDIA's Parakeet-TDT model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2) for speech recognition + [Pyannote](https://github.com/pyannote/pyannote-audio) for speaker diarization.
+A simple FastAPI server that provides an OpenAI Whisper API-compatible endpoint backed by [NVIDIA's Parakeet-TDT model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2) for speech recognition + [NVIDIA NeMo](https://github.com/NVIDIA/NeMo) for speaker diarization.
 
 ## Features
 
@@ -8,16 +8,32 @@ A simple FastAPI server that provides an OpenAI Whisper API-compatible endpoint 
 - Uses [NVIDIA's Parakeet-TDT 0.6B V2 model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2) for high-quality transcription
 - Supports all Whisper API response formats (json, text, srt, vtt, verbose_json)
 - Supports word-level and segment-level timestamps
-- Optional speaker diarization using [Pyannote.audio](https://github.com/pyannote/pyannote-audio)
+- Optional speaker diarization using [NVIDIA NeMo](https://github.com/NVIDIA/NeMo)
 - FastAPI-based server with automatic OpenAPI documentation
 
 ## Requirements
 
-- NVIDIA GPU with CUDA support (recommended)
+- NVIDIA GPU with CUDA support (recommended, but CPU works too)
 - Python 3.8 or higher
-- HuggingFace account and access token (required for speaker diarization)
+- Docker (for containerized deployment)
 
-## Installation
+## Quick Start with Docker (Recommended)
+
+The fastest way to get started is using Docker:
+
+```bash
+# Start Docker Desktop, then run:
+docker-compose up -d
+
+# Test the API:
+curl http://localhost:8000/health
+```
+
+For detailed Docker instructions, see [DOCKER_QUICKSTART.md](DOCKER_QUICKSTART.md)
+
+For AWS deployment, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+## Local Installation (Without Docker)
 
 1. Clone this repository:
    ```bash
@@ -36,27 +52,9 @@ A simple FastAPI server that provides an OpenAI Whisper API-compatible endpoint 
    pip install -r requirements.txt
    ```
 
-4. Set up speaker diarization (optional):
-   - Create a free account at [HuggingFace](https://huggingface.co/)
-   - Generate an access token at [HuggingFace Settings](https://huggingface.co/settings/tokens)
-   - Accept the user agreement for the [Pyannote speaker diarization model](https://huggingface.co/pyannote/speaker-diarization-3.1)
-
-5. Run the server:
-
-   **With speaker diarization:**
+4. Run the server:
    ```bash
-   ./run.sh --hf-token "your_token_here"
-   ```
-
-   **Without speaker diarization:**
-   ```bash
-   ./run.sh
-   ```
-
-   **Other options:**
-   ```bash
-   ./run.sh --help  # See all available options
-   ./run.sh --port 8080 --debug --hf-token "your_token_here"
+   python start_server.py
    ```
 
 ## Usage
@@ -81,7 +79,7 @@ Parameters:
 - `temperature`: Temperature for sampling (defaults to 0.0)
 - `vad_filter`: Voice activity detection filter (defaults to false)
 - `prompt`: Optional prompt to guide the transcription (ignored but accepted for compatibility)
-- `diarize`: Enable speaker diarization (defaults to true, requires HuggingFace token)
+- `diarize`: Enable speaker diarization (defaults to true)
 - `include_diarization_in_text`: Include speaker labels in transcript text (defaults to true)
 
 Example with curl:
@@ -194,23 +192,15 @@ The `segments` field is included when the `timestamps` parameter is set to `true
 
 ## Speaker Diarization
 
-The API includes speaker diarization capabilities using [Pyannote.audio](https://github.com/pyannote/pyannote-audio):
-
-### Setup Requirements
-
-For speaker diarization to work, you need:
-
-1. **HuggingFace Account**: Create a free account at [huggingface.co](https://huggingface.co/)
-2. **Access Token**: Generate a token at [HuggingFace Settings](https://huggingface.co/settings/tokens)
-3. **Model Agreement**: Accept the user agreement for [pyannote/speaker-diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1)
-4. **Environment Variable**: Set `HUGGINGFACE_ACCESS_TOKEN` with your token
+The API includes speaker diarization capabilities using [NVIDIA NeMo](https://github.com/NVIDIA/NeMo):
 
 ### Features
 
-- Automatic speaker detection and labeling
+- Automatic speaker detection and labeling using NeMo's ClusteringDiarizer
 - Integration with transcription segments
 - Optional speaker labels in transcript text
 - Support for multiple speakers per audio file
+- No external tokens or accounts required
 
 ### Usage
 
@@ -241,11 +231,10 @@ Use the `run.sh` script to configure and start the server:
 #   --port PORT         Set server port (default: 8000)
 #   --host HOST         Set server host (default: 0.0.0.0)
 #   --skip-deps-check   Skip dependency checking
-#   --hf-token TOKEN    Set HuggingFace access token for speaker diarization
 #   --help              Show help message
 ```
 
-**Environment Variables** (for settings not available as command line arguments):
+**Environment Variables**:
 - `ENABLE_DIARIZATION`: Enable/disable diarization globally (default: true)
 - `INCLUDE_DIARIZATION_IN_TEXT`: Include speaker labels in text by default (default: true)
 - `MODEL_ID`: Parakeet model to use (default: nvidia/parakeet-tdt-0.6b-v2)
@@ -260,17 +249,17 @@ The [NVIDIA Parakeet-TDT model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-
 - Support for punctuation and capitalization
 - High accuracy with word error rates as low as 1.69% on LibriSpeech test-clean
 
-[Pyannote.audio](https://github.com/pyannote/pyannote-audio) speaker diarization adds:
+[NVIDIA NeMo](https://github.com/NVIDIA/NeMo) speaker diarization adds:
 - Automatic speaker identification using state-of-the-art models
 - Real-time speaker change detection
 - Support for unlimited number of speakers
+- No external dependencies or tokens required
 
 ## Acknowledgments
 
 This project builds upon excellent work by:
 
-- **NVIDIA NeMo Team**: For the outstanding [Parakeet-TDT model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2) that provides state-of-the-art speech recognition
-- **Pyannote Team**: For the powerful [Pyannote.audio](https://github.com/pyannote/pyannote-audio) speaker diarization toolkit
+- **NVIDIA NeMo Team**: For the outstanding [Parakeet-TDT model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2) that provides state-of-the-art speech recognition and the [NeMo toolkit](https://github.com/NVIDIA/NeMo) for speaker diarization
 
 ## License
 

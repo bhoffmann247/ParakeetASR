@@ -27,9 +27,6 @@ DEFAULT_MODEL_ID = "nvidia/parakeet-tdt-0.6b-v2"
 DEFAULT_TEMPERATURE = 0.0
 DEFAULT_CHUNK_DURATION = 500  # 5 minutes in seconds
 
-# Hugging Face configuration
-HF_TOKEN = os.environ.get("HUGGINGFACE_ACCESS_TOKEN")
-
 # Diarization settings
 DEFAULT_DIARIZE = True
 DEFAULT_NUM_SPEAKERS = None  # None means auto-detection
@@ -61,26 +58,15 @@ class Config:
         self.chunk_duration = int(os.environ.get("CHUNK_DURATION", DEFAULT_CHUNK_DURATION))
 
         # Diarization settings
-        self.hf_token = HF_TOKEN
         self.enable_diarization = os.environ.get("ENABLE_DIARIZATION", str(DEFAULT_DIARIZE)).lower() == "true"
         self.include_diarization_in_text = os.environ.get("INCLUDE_DIARIZATION_IN_TEXT", str(DEFAULT_INCLUDE_DIARIZATION_IN_TEXT)).lower() == "true"
         self.default_num_speakers = DEFAULT_NUM_SPEAKERS
-
 
         # File paths
         self.temp_dir = os.environ.get("TEMP_DIR", "/tmp/parakeet")
         Path(self.temp_dir).mkdir(parents=True, exist_ok=True)
 
         logger.debug(f"Initialized configuration: debug={self.debug}, model={self.model_id}")
-
-    def update_hf_token(self, token: str) -> None:
-        """Update the HuggingFace token"""
-        self.hf_token = token
-        logger.info("Updated HuggingFace token")
-
-    def get_hf_token(self) -> Optional[str]:
-        """Get the HuggingFace token"""
-        return self.hf_token
 
     def as_dict(self) -> Dict[str, Any]:
         """Return configuration as dictionary (for API responses)"""
@@ -92,8 +78,7 @@ class Config:
             "temperature": self.temperature,
             "chunk_duration": self.chunk_duration,
             "enable_diarization": self.enable_diarization,
-            "include_diarization_in_text": self.include_diarization_in_text,
-            "has_hf_token": self.hf_token is not None
+            "include_diarization_in_text": self.include_diarization_in_text
         }
 
 

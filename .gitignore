@@ -50,3 +50,14 @@ Thumbs.db
 
 # Pytest
 .pytest_cache/
+
+# Test outputs
+tests/Output/
+Output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

@@ -14,7 +14,6 @@ sentencepiece
 pandas
 jiwer
 librosa
-pyannote-audio
 webdataset
 datasets
 editdistance
@@ -23,3 +22,6 @@ pydub
 ffmpeg-python
 soundfile
 cuda-python
+omegaconf
+scikit-learn
+fiddle
