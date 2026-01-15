@@ -1,8 +1,9 @@
+flask
+uWSGI
+flask-expects-json
+flask-Cors
+flask-oidc
 nemo_toolkit[asr]
-fastapi
-uvicorn
-python-multipart
-pydantic
 torch
 numpy
 hydra-core
