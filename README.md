@@ -21,17 +21,58 @@ A simple FastAPI server that provides an OpenAI Whisper API-compatible endpoint 
 
 The fastest way to get started is using Docker:
 
-```bash
-# Start Docker Desktop, then run:
-docker-compose up -d
+### Option 1: Using the Quick Start Script (Easiest)
 
-# Test the API:
+```powershell
+# Build and start the container
+.\run-docker.ps1
+
+# Check status
+.\run-docker.ps1 -Status
+
+# View logs
+.\run-docker.ps1 -Logs
+
+# Stop container
+.\run-docker.ps1 -Stop
+```
+
+### Option 2: Manual Docker Commands
+
+```bash
+# Build the image
+docker build -t parakeet-api .
+
+# Run the container
+docker run -d --name parakeet-api -p 8000:8000 parakeet-api
+
+# Check health
 curl http://localhost:8000/health
 ```
 
-For detailed Docker instructions, see [DOCKER_QUICKSTART.md](DOCKER_QUICKSTART.md)
+### Testing the API
 
-For AWS deployment, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+Run the comprehensive test suite:
+
+```powershell
+.\test-api.ps1
+```
+
+Or test manually:
+
+```powershell
+curl.exe -X POST http://localhost:8000/v1/audio/transcriptions `
+  -F "file=@tests/Input/ContactCenter/103046_1000780789-21-00-01.wav" `
+  -F "model=parakeet-tdt-0.6b-v2" `
+  -F "response_format=json" `
+  -F "diarize=true"
+```
+
+### Documentation
+
+- **Docker Guide**: [docs/DOCKER_GUIDE.md](docs/DOCKER_GUIDE.md) - Complete Docker usage
+- **Response Formats**: [docs/RESPONSE_FORMATS.md](docs/RESPONSE_FORMATS.md) - All output formats
+- **AWS Deployment**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) - Production deployment
 
 ## Local Installation (Without Docker)
 

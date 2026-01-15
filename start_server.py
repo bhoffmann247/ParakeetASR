@@ -3,6 +3,18 @@
 Start the FastAPI server for transcription and diarization
 """
 
+import sys
+from types import ModuleType
+
+# Create mock module for nv_one_logger if it doesn't exist
+# This is an optional NeMo telemetry module that's not available on PyPI
+try:
+    import nv_one_logger
+except ImportError:
+    # Create a mock module
+    mock_module = ModuleType('nv_one_logger')
+    sys.modules['nv_one_logger'] = mock_module
+
 import uvicorn
 from api import create_app
 
