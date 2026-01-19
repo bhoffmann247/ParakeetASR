@@ -53,6 +53,9 @@ def transcribe_audio_file(audio, options):
 def transcribe(file, batch_size):
     """
     Main transcription function
+    
+    Returns:
+        Tuple of (transcription_result, file_path) where file_path is the saved audio file
     """
     upload_dir = "/uploads"
     options = Options(file_name=file.filename, batch_size=batch_size)
@@ -101,9 +104,11 @@ def transcribe(file, batch_size):
         process_total = process_end - process_start
         print(f"{options.file_name} - Total Process Time: {process_total}")
         
-        return result
+        # Return both result and file path (caller is responsible for cleanup)
+        return result, file_path
         
-    finally:
-        # Cleanup
+    except Exception as e:
+        # Cleanup on error
         if os.path.exists(file_path):
             os.remove(file_path)
+        raise e

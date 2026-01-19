@@ -3,6 +3,7 @@ from flask import Blueprint, request
 from services.parakeet_transcription_service import transcribe, change_model
 from services.nemo_diarization_service import apply_diarization
 import traceback
+import os
 
 transcription_blueprint = Blueprint('transcriptions_blueprint', __name__)
 
@@ -17,13 +18,15 @@ def start_transcription():
     batch_size = request.form.get('batch_size', '16')
     
     file = request.files.getlist('files')[0]
+    audio_path = None
     
     try:
-        transcription = transcribe(file, batch_size)
+        # Transcribe (returns result and file path)
+        transcription, audio_path = transcribe(file, batch_size)
         
         if diarize:
             try:
-                transcription = apply_diarization(transcription)
+                transcription = apply_diarization(transcription, audio_path)
             except Exception as e:
                 print(f"Error applying diarization: \n\n{e}")
                 traceback.print_exc()
@@ -38,6 +41,13 @@ def start_transcription():
         print(f"Error during transcription: \n\n{e}")
         traceback.print_exc()
         return {"error": str(e)}, 500
+    finally:
+        # Cleanup audio file
+        if audio_path and os.path.exists(audio_path):
+            try:
+                os.remove(audio_path)
+            except Exception as e:
+                print(f"Failed to cleanup audio file: {e}")
 
 @transcription_blueprint.route('', methods=['GET'])
 @oidc.accept_token()
