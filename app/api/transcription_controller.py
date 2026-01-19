@@ -1,7 +1,7 @@
 from app.app import app, oidc
 from flask import Blueprint, request
 from services.parakeet_transcription_service import transcribe, change_model
-from services.diarization_service import apply_diarization
+from services.nemo_diarization_service import apply_diarization
 import traceback
 
 transcription_blueprint = Blueprint('transcriptions_blueprint', __name__)

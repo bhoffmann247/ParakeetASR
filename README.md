@@ -160,7 +160,7 @@ CrossbowASR/
 │   │   └── transcription_controller.py
 │   └── services/                # Business logic
 │       ├── parakeet_transcription_service.py
-│       └── diarization_service.py
+│       └── nemo_diarization_service.py
 ├── deployment/                  # Kubernetes configs
 ├── Dockerfile
 └── requirements.txt
@@ -227,11 +227,8 @@ This service is designed as a drop-in replacement for the Whisper service:
 - Diarization: NeMo-based (instead of WhisperX)
 - No redaction endpoints (transcription/diarization only)
 
-See [WHISPER_MIGRATION.md](WHISPER_MIGRATION.md) for detailed migration guide.
-
 ## Documentation
 
-- [Whisper Migration Guide](WHISPER_MIGRATION.md) - Complete migration documentation
 - [Docker Guide](docs/DOCKER_GUIDE.md) - Docker usage
 - [Response Formats](docs/RESPONSE_FORMATS.md) - API response formats
 - [Deployment Guide](docs/DEPLOYMENT.md) - AWS deployment
