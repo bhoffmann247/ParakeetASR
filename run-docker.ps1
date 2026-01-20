@@ -6,12 +6,13 @@ param(
     [switch]$Restart,
     [switch]$Logs,
     [switch]$Status,
-    [switch]$Build
+    [switch]$Build,
+    [switch]$NoGPU  # Optional flag to disable GPU
 )
 
 $ContainerName = "parakeet-api"
 $ImageName = "parakeet-api"
-$Port = "8000"
+$Port = "90"
 
 function Write-Info {
     param([string]$Text, [string]$Color = "Cyan")
@@ -42,10 +43,9 @@ if ($Status) {
     
     Write-Info "`nHealth Check:" "Yellow"
     try {
-        $health = Invoke-RestMethod -Uri "http://localhost:$Port/health" -UseBasicParsing -TimeoutSec 5
-        Write-Info "Status: $($health.status)" "Green"
-        Write-Info "Model: $($health.model_id)" "Green"
-        Write-Info "Model Loaded: $($health.model_loaded)" "Green"
+        $health = Invoke-RestMethod -Uri "http://localhost:$Port/" -UseBasicParsing -TimeoutSec 5
+        Write-Info "Status: OK" "Green"
+        Write-Info "Response: $health" "Green"
     } catch {
         Write-Info "Server not responding" "Red"
     }
@@ -84,8 +84,6 @@ if ($existing -and -not $Restart) {
         Write-Info "[OK] Container is already running" "Green"
         Write-Info ""
         Write-Info "API URL: http://localhost:$Port" "Yellow"
-        Write-Info "API Docs: http://localhost:$Port/docs" "Yellow"
-        Write-Info "Health: http://localhost:$Port/health" "Yellow"
         Write-Info ""
         Write-Info "Commands:" "Yellow"
         Write-Info "  View logs:    .\run-docker.ps1 -Logs"
@@ -113,9 +111,42 @@ if (-not $imageExists) {
     }
 }
 
+# Determine GPU usage
+$useGPU = -not $NoGPU
+$gpuAvailable = $false
+
+if ($useGPU) {
+    Write-Info "Checking for GPU support..." "Yellow"
+    try {
+        $gpuInfo = docker run --rm --gpus all nvidia/cuda:12.2.2-base-ubuntu22.04 nvidia-smi 2>&1
+        if ($LASTEXITCODE -eq 0) {
+            $gpuAvailable = $true
+            Write-Info "[OK] GPU support detected - will use GPU acceleration" "Green"
+        } else {
+            Write-Info "[WARNING] GPU not available - will run on CPU (slower)" "Yellow"
+            Write-Info "To suppress this check, use: .\run-docker.ps1 -NoGPU" "Yellow"
+        }
+    } catch {
+        Write-Info "[WARNING] GPU not available - will run on CPU (slower)" "Yellow"
+        Write-Info "To suppress this check, use: .\run-docker.ps1 -NoGPU" "Yellow"
+    }
+} else {
+    Write-Info "GPU disabled by -NoGPU flag - will run on CPU" "Yellow"
+}
+
 # Run container
 Write-Info "Starting new container..." "Yellow"
-docker run -d --name $ContainerName -p "${Port}:8000" $ImageName
+
+if ($useGPU -and $gpuAvailable) {
+    Write-Info "Running with GPU acceleration (--gpus all)..." "Green"
+    docker run -d --name $ContainerName --gpus all -p "${Port}:90" $ImageName
+} elseif ($useGPU -and -not $gpuAvailable) {
+    Write-Info "GPU requested but not available - running on CPU..." "Yellow"
+    docker run -d --name $ContainerName -p "${Port}:90" $ImageName
+} else {
+    Write-Info "Running on CPU (GPU disabled)..." "Yellow"
+    docker run -d --name $ContainerName -p "${Port}:90" $ImageName
+}
 
 if ($LASTEXITCODE -eq 0) {
     Write-Info "[OK] Container started successfully" "Green"
@@ -133,7 +164,7 @@ if ($LASTEXITCODE -eq 0) {
         $attempt++
         
         try {
-            $response = Invoke-WebRequest -Uri "http://localhost:$Port/health" -UseBasicParsing -TimeoutSec 3 -ErrorAction SilentlyContinue
+            $response = Invoke-WebRequest -Uri "http://localhost:$Port/" -UseBasicParsing -TimeoutSec 3 -ErrorAction SilentlyContinue
             if ($response.StatusCode -eq 200) {
                 Write-Info "[OK] Server is ready!" "Green"
                 break
@@ -155,14 +186,21 @@ if ($LASTEXITCODE -eq 0) {
     Write-Info "==================================================" "Cyan"
     Write-Info ""
     Write-Info "API URL: http://localhost:$Port" "Yellow"
-    Write-Info "API Docs: http://localhost:$Port/docs" "Yellow"
-    Write-Info "Health: http://localhost:$Port/health" "Yellow"
+    Write-Info ""
+    if ($useGPU -and $gpuAvailable) {
+        Write-Info "GPU Status: ENABLED (CUDA acceleration active)" "Green"
+        Write-Info "Expected performance: 30-60s for 6-min audio" "Green"
+    } else {
+        Write-Info "GPU Status: DISABLED (Running on CPU)" "Yellow"
+        Write-Info "Expected performance: 5-10 min for 6-min audio" "Yellow"
+        Write-Info "For production use, GPU is required!" "Yellow"
+    }
     Write-Info ""
     Write-Info "Quick Test:" "Yellow"
-    Write-Info '  curl.exe -X POST http://localhost:8000/v1/audio/transcriptions \'
-    Write-Info '    -F "file=@tests/Input/ContactCenter/103046_1000780789-21-00-01.wav" \'
-    Write-Info '    -F "model=parakeet-tdt-0.6b-v2" \'
-    Write-Info '    -F "response_format=json"'
+    Write-Info '  curl.exe -X POST http://localhost:90/transcriptions \'
+    Write-Info '    -F "files=@tests/Input/ContactCenter/103046_1000780789-21-00-01.wav" \'
+    Write-Info '    -F "batch_size=16" \'
+    Write-Info '    -F "diarize=true"'
     Write-Info ""
     Write-Info "Commands:" "Yellow"
     Write-Info "  View logs:    .\run-docker.ps1 -Logs"
@@ -170,7 +208,9 @@ if ($LASTEXITCODE -eq 0) {
     Write-Info "  Restart:      .\run-docker.ps1 -Restart"
     Write-Info "  Stop:         .\run-docker.ps1 -Stop"
     Write-Info ""
-    Write-Info "Run full test suite: .\test-api.ps1 -SkipBuild -SkipStartup" "Yellow"
+    if (-not $gpuAvailable -and $useGPU) {
+        Write-Info "Note: To run without GPU check, use: .\run-docker.ps1 -NoGPU" "Cyan"
+    }
     Write-Info ""
 } else {
     Write-Info "[ERROR] Failed to start container" "Red"

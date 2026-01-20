@@ -67,9 +67,31 @@ def transcribe(file, batch_size):
     if not os.path.exists(upload_dir):
         os.makedirs(upload_dir)
     
-    # Save uploaded file
+    # Save uploaded file with proper format
     file_path = os.path.join(upload_dir, file.filename)
-    file.save(file_path)
+    
+    # Save to temporary location first
+    temp_path = file_path + ".tmp"
+    file.save(temp_path)
+    
+    # Convert to proper WAV format using soundfile to ensure seekability
+    try:
+        import soundfile as sf
+        import numpy as np
+        
+        # Read audio data
+        audio_data, sample_rate = sf.read(temp_path)
+        
+        # Write as proper WAV file
+        sf.write(file_path, audio_data, sample_rate, subtype='PCM_16')
+        
+        # Remove temp file
+        os.remove(temp_path)
+    except Exception as e:
+        # If conversion fails, just use the original file
+        print(f"Warning: Could not convert audio file: {e}")
+        if os.path.exists(temp_path):
+            os.rename(temp_path, file_path)
     
     try:
         # Transcribe

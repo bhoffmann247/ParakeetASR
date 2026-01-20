@@ -29,13 +29,39 @@ uwsgi --ini app.ini
 
 ### Docker
 
+**GPU support is enabled by default.**
+
 ```bash
 # Build
 docker build -t crossbow-parakeet-service .
 
-# Run
+# Run with GPU support (DEFAULT)
 docker run -p 90:90 --gpus all crossbow-parakeet-service
+
+# Run on CPU only (not recommended for production)
+docker run -p 90:90 crossbow-parakeet-service
 ```
+
+**Using the run script (recommended):**
+```bash
+# Start with GPU (default - automatically detected)
+.\run-docker.ps1
+
+# Start without GPU (development/testing only)
+.\run-docker.ps1 -NoGPU
+
+# Other commands
+.\run-docker.ps1 -Logs      # View logs
+.\run-docker.ps1 -Status    # Check status and GPU usage
+.\run-docker.ps1 -Restart   # Restart container
+.\run-docker.ps1 -Stop      # Stop container
+```
+
+The script automatically:
+- Detects GPU availability
+- Uses `--gpus all` if GPU is available
+- Falls back to CPU if GPU is not available
+- Shows performance expectations based on GPU status
 
 ### Kubernetes
 
@@ -207,11 +233,14 @@ kubectl logs -f deployment/crossbow-parakeet-service -n development
 
 ## Requirements
 
-- NVIDIA GPU with CUDA support (recommended)
+- **GPU with CUDA support (REQUIRED for production)**
+  - NVIDIA GPU with CUDA 12.2+ support
+  - NVIDIA Container Toolkit installed
+  - Minimum 8GB VRAM recommended
 - Python 3.10+
-- CUDA 12.2+
+- Docker with GPU support
 - 4GB+ RAM (28GB for production)
-- OIDC provider for authentication
+- OIDC provider for authentication (optional, can be disabled for testing)
 
 ## Migration from Whisper
 
@@ -229,19 +258,48 @@ This service is designed as a drop-in replacement for the Whisper service:
 
 ## Documentation
 
+- [GPU Setup Guide](docs/GPU_SETUP.md) - **REQUIRED** for production deployment
 - [Docker Guide](docs/DOCKER_GUIDE.md) - Docker usage
 - [Response Formats](docs/RESPONSE_FORMATS.md) - API response formats
 - [Deployment Guide](docs/DEPLOYMENT.md) - AWS deployment
 
 ## Performance
 
-### CPU
-- Transcription: ~5x real-time
-- With diarization: ~10x real-time
+### With GPU (CUDA - REQUIRED for production)
+- Transcription: 50-100x faster than real-time
+- Diarization: 10-20x faster than real-time
+- Total processing: ~30-60 seconds for 6-minute audio
 
-### GPU (Recommended)
-- Transcription: 50-100x faster
-- Optimized for NVIDIA GPUs with CUDA
+### CPU (Development/Testing only)
+- Transcription: ~5x real-time
+- Diarization: ~10x real-time (very slow, 5-10 minutes)
+- **Not recommended for production use**
+
+## Diarization
+
+The service uses NVIDIA NeMo's ClusteringDiarizer for speaker diarization:
+
+- **VAD Model**: vad_multilingual_marblenet
+- **Speaker Embedding Model**: titanet_large
+- **Clustering**: Spectral clustering with automatic speaker count detection
+- **GPU Acceleration**: Required for acceptable performance
+- **Fallback**: Timing-based heuristic diarization if NeMo fails (CPU mode)
+
+### Diarization Configuration
+
+The diarization can be configured in `app/services/nemo_diarization_service.py`:
+
+- `max_num_speakers`: Maximum number of speakers to detect (default: 8)
+- `window_length_in_sec`: Window size for speaker embeddings (default: 1.5s)
+- `shift_length_in_sec`: Shift between windows (default: 0.75s)
+- `batch_size`: Batch size for embedding extraction (default: 16)
+
+### GPU Requirements for Diarization
+
+- **Minimum**: 4GB VRAM
+- **Recommended**: 8GB+ VRAM
+- **CUDA Version**: 12.2+
+- **Driver**: NVIDIA 525.60.13 or newer
 
 ## Troubleshooting
 
