@@ -1,0 +1,7 @@
+resources:
+    - deployment_service.yaml
+    - service.yaml
+images:
+  - name: crossbow-parakeet-service
+    newName: nexus-docker.shared.intouchcx.cloud/crossbow-parakeet-service
+    newTag: "{IMAGE-TAG}"

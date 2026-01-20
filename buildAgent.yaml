@@ -1,0 +1,22 @@
+spec:
+  containers:
+  - name: docker
+    image: docker:dind
+    tty: true
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "6Gi"
+        cpu: "3000m"
+  - name: kubectl
+    image: nexus-docker.shared.intouchcx.cloud/jenkins-kubectl-worker:latest
+    tty: true
+    command:
+    - cat
+    envFrom:
+    - secretRef:
+        name: jenkins-kubectl-secret

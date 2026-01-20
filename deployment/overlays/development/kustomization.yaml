@@ -1,0 +1,10 @@
+bases:
+  - ../../base
+resources:
+  - gateway.yaml
+  - virtual_service.yaml
+  - pvc_model.yaml
+  - pvc_model_cache.yaml
+patchesStrategicMerge:
+  - deployment_service.yaml
+namespace: development
