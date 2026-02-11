@@ -118,7 +118,7 @@ git push origin main
 # 4. Deploy to SageMaker
 python deploy_ghcr.py \
   --image ghcr.io/yourusername/parakeet-transcription:latest \
-  --role arn:aws:iam::716828325351:role/service-role/AmazonSageMaker-ExecutionRole-20251022T094938 \
+  --role arn:aws:iam::YOUR_ACCOUNT_ID:role/SageMakerExecutionRole \
   --instance-type ml.g5.2xlarge
 
 # 5. Test

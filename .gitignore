@@ -8,6 +8,16 @@ __pycache__/
 env/
 venv/
 
+# Secrets and credentials
+client_secrets.json
+*secret*.json
+*.pem
+*.key
+*.crt
+.aws/
+credentials
+config
+
 # Rope project settings
 .ropeproject
 
@@ -54,6 +64,7 @@ Thumbs.db
 # Test outputs
 tests/Output/
 Output/
+test_output.json
 
 # IDE
 .vscode/
@@ -61,3 +72,9 @@ Output/
 *.swp
 *.swo
 *~
+
+# Docker
+.dockerignore
+
+# SageMaker local testing
+sagemaker/test_output.json
