@@ -203,6 +203,27 @@ CrossbowASR/
 
 ## Deployment
 
+### AWS SageMaker (Recommended for AWS)
+
+Deploy to SageMaker without needing ECR or managing infrastructure:
+
+```bash
+cd sagemaker
+pip install -r deployment-requirements.txt
+
+python deploy.py \
+  --role arn:aws:iam::YOUR_ACCOUNT_ID:role/SageMakerRole \
+  --instance-type ml.g4dn.xlarge
+```
+
+See [sagemaker/SETUP.md](sagemaker/SETUP.md) for detailed instructions.
+
+**Benefits:**
+- No Docker registry required
+- Managed infrastructure and auto-scaling
+- Built-in monitoring and logging
+- Pay-per-use pricing
+
 ### Kubernetes Resources
 
 **Base:**

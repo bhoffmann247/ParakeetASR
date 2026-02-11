@@ -1,0 +1,49 @@
+# SageMaker-compatible Dockerfile using your existing setup
+FROM nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu22.04
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3.10-dev \
+    python3-pip \
+    python3.10-venv \
+    libsndfile1 \
+    build-essential \
+    curl \
+    git \
+    ffmpeg \
+    nginx \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up Python
+RUN pip install --upgrade pip
+
+# Install PyTorch with CUDA support
+RUN pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+RUN pip install numpy==1.26.4
+
+# Copy and install requirements
+COPY requirements.txt /opt/ml/code/requirements.txt
+RUN pip install -r /opt/ml/code/requirements.txt
+
+# Install additional SageMaker dependencies
+RUN pip install flask gunicorn
+
+# Set up SageMaker directories
+ENV PATH="/opt/ml/code:${PATH}"
+ENV PYTHONUNBUFFERED=TRUE
+ENV PYTHONDONTWRITEBYTECODE=TRUE
+
+# Copy application code
+COPY app /opt/ml/code/app
+COPY sagemaker/serve.py /opt/ml/code/serve.py
+
+# Set working directory
+WORKDIR /opt/ml/code
+
+# Expose port 8080 (SageMaker requirement)
+EXPOSE 8080
+
+# Entry point for SageMaker
+ENTRYPOINT ["python", "serve.py"]
