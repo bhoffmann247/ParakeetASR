@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: parakeetasr-gateway
+spec:
+  selector:
+    istio: dev-ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+      hosts:
+        - "parakeetasr.dev.intouchcx.cloud"
+    - port:
+        number: 443
+        name: https
+        protocol: HTTP #Needs to be http due to ssl offloading at the elb
+      hosts:
+        - "parakeetasr.dev.intouchcx.cloud"

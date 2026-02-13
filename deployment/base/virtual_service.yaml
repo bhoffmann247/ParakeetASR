@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: parakeetasr
+  namespace: service
+spec:
+  hosts:
+    - "parakeetasr.intouchcx.cloud" #Needs to match your gateway hostname specified.
+  gateways:
+    - parakeetasr-gateway #Needs to match your gateway name specified.
+  http:
+    - headers:
+        request:
+          set:
+            X-FORWARDED-PROTO: "https" #Required to ensure app knows ssl offloading is in place.  AWS is sending http due to using a TCP load balancer
+      route:
+        - destination:
+            port:
+              number: 80
+            host: parakeetasr

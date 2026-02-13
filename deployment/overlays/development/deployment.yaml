@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parakeetasr
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: parakeetasr
+  template:
+    spec:
+      containers:
+        - name: parakeetasr
+          livenessProbe:
+            httpGet:
+              path: /hc
+              port: 5000 
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 3

@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: parakeetasr-gateway #This will be the reference name used in the other config files. Should be <project>-service-gateway. or something similar.
+  namespace: service #This is the default k8s pod namespace it will default to in the event of a deployment. You will almost always use this namespace for production deployments.
+spec:
+  selector:
+    istio: internal-intouchcx-ingressgateway #Selector for what gateway we want to use. This internal service gateway allows traffic internally on our networks. Not externally accessible.
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+      hosts:
+      - "parakeetasr.intouchcx.cloud" #The hostname that will be used to access your deployed service.
+    - port:
+        number: 443
+        name: https
+        protocol: HTTP #Needs to be http due to ssl offloading at the elb
+      hosts:
+      - "parakeetasr.intouchcx.cloud" #The hostname that will be used to access your deployed service.

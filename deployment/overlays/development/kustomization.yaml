@@ -1,10 +1,10 @@
 bases:
   - ../../base
-resources:
+patchesStrategicMerge:
+  - deployment.yaml
   - gateway.yaml
   - virtual_service.yaml
-  - pvc_model.yaml
-  - pvc_model_cache.yaml
-patchesStrategicMerge:
-  - deployment_service.yaml
 namespace: development
+# configMapGenerator:
+#   - name: parakeetasr-shared-configmap
+#     env: config/parakeetasr-shared-configmap.env

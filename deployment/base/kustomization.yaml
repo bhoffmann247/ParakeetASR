@@ -1,7 +1,9 @@
 resources:
-    - deployment_service.yaml
-    - service.yaml
+  - deployment.yaml
+  - gateway.yaml
+  - service.yaml
+  - virtual_service.yaml
 images:
-  - name: crossbow-parakeet-service
-    newName: nexus-docker.shared.intouchcx.cloud/crossbow-parakeet-service
-    newTag: "{IMAGE-TAG}"
+  - name: parakeetasr
+    newName: nexus-docker.shared.intouchcx.cloud/parakeetasr
+    newTag: "{IMAGE-TAG}" #This variable will be overwritten via Jenkins for tagging the image with the proper version.
