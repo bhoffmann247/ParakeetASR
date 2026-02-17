@@ -1,4 +1,3 @@
-from app.app import app, oidc
 from flask import Blueprint, request
 from services.parakeet_transcription_service import transcribe, change_model
 from services.nemo_diarization_service import apply_diarization
@@ -8,13 +7,11 @@ import os
 transcription_blueprint = Blueprint('transcriptions_blueprint', __name__)
 
 @transcription_blueprint.route('', methods=['POST'])
-# @oidc.accept_token()  # Temporarily disabled for testing
 def start_transcription():
     """
     Transcribe audio file with optional diarization
     """
     diarize = request.form.get('diarize', 'true').lower() == 'true'
-    response_format = request.form.get('response_format', 'json')
     batch_size = request.form.get('batch_size', '16')
     
     file = request.files.getlist('files')[0]
@@ -50,12 +47,10 @@ def start_transcription():
                 print(f"Failed to cleanup audio file: {e}")
 
 @transcription_blueprint.route('', methods=['GET'])
-# @oidc.accept_token()  # Temporarily disabled for testing
 def get():
     return "GET Not Supported", 404
 
 @transcription_blueprint.route('/model', methods=['POST'])
-# @oidc.accept_token()  # Temporarily disabled for testing
 def change_transcribe_model():
     model_name = request.form.get('model_name', 'parakeet-tdt-0.6b-v2')
     

@@ -1,5 +1,4 @@
-from app.app import app, oidc
-from flask import Blueprint, request
+from flask import Blueprint
 
 home_blueprint = Blueprint('home_blueprint', __name__)
 
