@@ -2,9 +2,13 @@ flask
 uWSGI
 flask-expects-json
 flask-Cors
+# Pin torch versions BEFORE nemo to prevent conflicts
+torch==2.1.0
+torchaudio==2.1.0
+torchvision==0.16.0
+numpy==1.26.4
+# NeMo and dependencies
 nemo_toolkit[asr]
-torch
-numpy
 hydra-core
 lightning
 lhotse

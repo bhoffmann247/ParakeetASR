@@ -9,14 +9,15 @@ WORKDIR /app
 RUN pip install uwsgi
 RUN pip install ffmpeg-python
 
-# Install compatible PyTorch, torchaudio, and torchvision together
+# Install compatible PyTorch versions FIRST with CUDA support
 RUN pip install torch==2.1.0 torchaudio==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu121
 
 RUN pip install numpy==1.26.4
 
 COPY ./requirements.txt requirements.txt
 
-RUN pip install -r requirements.txt
+# Install requirements without upgrading torch/torchaudio
+RUN pip install -r requirements.txt --upgrade-strategy only-if-needed
 
 RUN apt-get update
 
