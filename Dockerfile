@@ -12,14 +12,14 @@ RUN pip install --upgrade pip
 # Install uWSGI
 RUN pip install uwsgi
 
-# Install compatible PyTorch versions FIRST with CUDA 12.1 support
-# Using 2.2.0 for device_mesh support required by NeMo
-RUN pip install torch==2.2.0 torchaudio==2.2.0 torchvision==0.17.0 --index-url https://download.pytorch.org/whl/cu121
-
 COPY ./requirements.txt requirements.txt
 
-# Install requirements without upgrading torch/torchaudio
-RUN pip install -r requirements.txt --upgrade-strategy only-if-needed
+# Install requirements first (this will install a PyTorch version)
+RUN pip install -r requirements.txt
+
+# Force reinstall PyTorch 2.2.0 with CUDA 12.1 support AFTER requirements
+# This ensures device_mesh module is available and nothing downgrades it
+RUN pip install --force-reinstall --no-deps torch==2.2.0 torchaudio==2.2.0 torchvision==0.17.0 --index-url https://download.pytorch.org/whl/cu121
 
 RUN useradd --no-create-home nginx
 

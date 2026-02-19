@@ -2,12 +2,7 @@ flask
 uWSGI
 flask-expects-json
 flask-Cors
-# Pin torch versions BEFORE nemo to prevent conflicts
-# Using 2.2.0 for device_mesh support
-torch==2.2.0
-torchaudio==2.2.0
-torchvision==0.17.0
-numpy==1.26.4
+# PyTorch versions are managed in Dockerfile to ensure CUDA compatibility
 # NeMo and dependencies
 nemo_toolkit[asr]
 hydra-core
