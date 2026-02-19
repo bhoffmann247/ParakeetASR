@@ -23,7 +23,7 @@ spec:
               memory: "512Mi"
               cpu: "500m"
             limits:
-              memory: "2056Mi"
+              memory: "16Gi"
               cpu: "2000m"
       tolerations:
       - key: "nvidia.com/gpu"
