@@ -14,8 +14,10 @@ RUN pip install uwsgi
 
 COPY ./requirements.txt requirements.txt
 
-# Install Cython (required to build youtokentome, a NeMo 1.23 dependency)
+# Install Cython and youtokentome (youtokentome needs Cython at build time
+# but pip's build isolation prevents it from seeing the global install)
 RUN pip install Cython
+RUN pip install youtokentome --no-build-isolation
 
 # Install PyTorch 2.2.0 FIRST with CUDA 12.1 support
 # Using 2.2.0 for device_mesh support required by NeMo
