@@ -3,10 +3,11 @@ uWSGI
 flask-expects-json
 flask-Cors
 # PyTorch versions are managed in Dockerfile to ensure CUDA compatibility
-# NeMo and dependencies
-nemo_toolkit[asr]
+# NeMo 1.23.0 is the last version compatible with PyTorch 2.2.0
+# NeMo 2.x requires PyTorch 2.3+ (SequenceParallel, etc.)
+nemo_toolkit[asr]==1.23.0
 hydra-core
-lightning
+pytorch-lightning==2.0.7
 lhotse
 einops
 transformers

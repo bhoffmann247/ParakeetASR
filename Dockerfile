@@ -25,8 +25,16 @@ RUN echo "torch==2.2.0" > /tmp/constraints.txt && \
     echo "torchvision==0.17.0" >> /tmp/constraints.txt && \
     pip install -r requirements.txt --constraint /tmp/constraints.txt
 
-# Verify PyTorch version and device_mesh availability
-RUN python3 -c "import torch; print(f'PyTorch version: {torch.__version__}'); from torch.distributed import device_mesh; print('device_mesh module found')"
+# Verify PyTorch version and NeMo import
+RUN python3 -c "\
+import torch; \
+print(f'PyTorch version: {torch.__version__}'); \
+from torch.distributed import device_mesh; \
+print('device_mesh module found'); \
+import nemo; \
+print(f'NeMo version: {nemo.__version__}'); \
+from nemo.collections.asr.models import EncDecRNNTBPEModel; \
+print('NeMo ASR models imported successfully')"
 
 RUN useradd --no-create-home nginx
 
