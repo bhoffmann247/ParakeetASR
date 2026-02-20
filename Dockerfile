@@ -29,6 +29,8 @@ RUN echo "torch==2.2.0" > /tmp/constraints.txt && \
     echo "torchaudio==2.2.0" >> /tmp/constraints.txt && \
     echo "torchvision==0.17.0" >> /tmp/constraints.txt && \
     echo "numpy<2" >> /tmp/constraints.txt && \
+    echo "huggingface-hub<0.24" >> /tmp/constraints.txt && \
+    echo "transformers<4.40" >> /tmp/constraints.txt && \
     pip install -r requirements.txt --constraint /tmp/constraints.txt
 
 # Verify PyTorch version and NeMo import
