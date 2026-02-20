@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Upgrade pip first
-RUN pip install --upgrade pip
+# Upgrade pip, pin setuptools < 81 (82+ removed pkg_resources needed by pytorch-lightning 2.0.7)
+RUN pip install --upgrade pip "setuptools<81"
 
 # Install uWSGI
 RUN pip install uwsgi
@@ -28,6 +28,7 @@ RUN pip install torch==2.2.0 torchaudio==2.2.0 torchvision==0.17.0 --index-url h
 RUN echo "torch==2.2.0" > /tmp/constraints.txt && \
     echo "torchaudio==2.2.0" >> /tmp/constraints.txt && \
     echo "torchvision==0.17.0" >> /tmp/constraints.txt && \
+    echo "numpy<2" >> /tmp/constraints.txt && \
     pip install -r requirements.txt --constraint /tmp/constraints.txt
 
 # Verify PyTorch version and NeMo import
