@@ -9,9 +9,11 @@ spec:
       requests:
         memory: "256Mi"
         cpu: "250m"
+        ephemeral-storage: "30Gi"
       limits:
         memory: "6Gi"
         cpu: "3000m"
+        ephemeral-storage: "50Gi"
   - name: kubectl
     image: nexus-docker.shared.intouchcx.cloud/jenkins-kubectl-worker:latest
     tty: true
